@@ -1,5 +1,7 @@
 # dating-coach-app
 
+![Dating Coach](Image/Dating%20coach.jpg)
+
 > Agentisk AI-slop. Generert i sin helhet av en AI-agent. Ingen menneskelig tanke, redigering eller kvalitetssikring er lagt ned i dette prosjektet.
 
 ## Hva er dette?
