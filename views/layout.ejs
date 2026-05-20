@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nb" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title + ' | Dating Coach Norge' : 'Dating Coach Norge' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar">
+    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    <span class="progress-text" id="progressText">0% fullført</span>
+  </div>
+
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="12" r="8" stroke="currentColor" stroke-width="2"/>
+        <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M20 8l4-4M12 8L8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Dating Coach</span>
+    </a>
+    <div class="nav-links">
+      <a href="/">Hjem</a>
+      <a href="/leksjoner">Leksjoner</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Bytt mørk/lys modus">
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main class="container">
+    <%- body %>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Dating Coach Norge. Bygget med Node.js, Express og EJS.</p>
+    <a href="https://github.com/<%= process.env.GITHUB_USERNAME || 'RealHaakon' %>/dating-coach-app" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    window.__COMPLETED_LESSONS__ = <%- typeof completedLessons !== 'undefined' ? JSON.stringify([...completedLessons]) : '[]' %>;
+    window.__TOTAL_LESSONS__ = <%- typeof lessons !== 'undefined' ? lessons.length : 0 %>;
+  </script>
+</body>
+</html>

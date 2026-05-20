@@ -1,0 +1,40 @@
+<%- include('header.ejs') %>
+
+<article class="lesson-detail">
+  <div class="lesson-hero">
+    <img src="/assets/images/<%= lesson.slug %>.jpg" alt="<%= lesson.title %>" loading="lazy">
+    <div class="lesson-hero-overlay">
+      <span class="badge badge-<%= lesson.difficulty %>"><%= lesson.difficulty %></span>
+      <h1><%= lesson.title %></h1>
+      <p><%= lesson.description %></p>
+    </div>
+  </div>
+
+  <div class="lesson-content">
+    <%- lesson.content %>
+  </div>
+
+  <div class="lesson-actions">
+    <form action="/leksjon/<%= lesson.slug %>/complete" method="POST">
+      <button type="submit" class="btn btn-complete <%= isCompleted ? 'completed' : '' %>">
+        <%= isCompleted ? '&#10003; Fullført — klikk for å angre' : 'Merk som fullført' %>
+      </button>
+    </form>
+  </div>
+
+  <nav class="lesson-nav">
+    <% if (prevLesson) { %>
+    <a href="/leksjon/<%= prevLesson.slug %>" class="lesson-nav-prev">&larr; Forrige leksjon</a>
+    <% } else { %>
+    <span></span>
+    <% } %>
+    <a href="/leksjoner" class="lesson-nav-back">Tilbake til oversikt</a>
+    <% if (nextLesson) { %>
+    <a href="/leksjon/<%= nextLesson.slug %>" class="lesson-nav-next">Neste leksjon &rarr;</a>
+    <% } else { %>
+    <span></span>
+    <% } %>
+  </nav>
+</article>
+
+<%- include('footer.ejs') %>

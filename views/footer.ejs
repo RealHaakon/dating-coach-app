@@ -1,0 +1,14 @@
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Dating Coach Norge. Bygget med Node.js, Express og EJS.</p>
+    <a href="https://github.com/RealHaakon/dating-coach-app" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    window.__COMPLETED_LESSONS__ = <%- typeof completedLessons !== 'undefined' ? JSON.stringify([...completedLessons]) : '[]' %>;
+    window.__TOTAL_LESSONS__ = <%- typeof lessons !== 'undefined' ? lessons.length : 0 %>;
+  </script>
+</body>
+</html>

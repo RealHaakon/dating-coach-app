@@ -1,0 +1,34 @@
+<%- include('header.ejs') %>
+
+<section class="lessons-header">
+  <h1>Alle leksjoner</h1>
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">Alle</button>
+    <button class="filter-btn" data-filter="begynner">Begynner</button>
+    <button class="filter-btn" data-filter="middels">Middels</button>
+    <button class="filter-btn" data-filter="avansert">Avansert</button>
+  </div>
+</section>
+
+<section class="lessons-grid" id="lessonsGrid">
+  <% lessons.forEach(function(lesson) { %>
+  <article class="lesson-card" data-difficulty="<%= lesson.difficulty %>">
+    <div class="card-image">
+      <img src="/assets/images/<%= lesson.slug %>.jpg" alt="<%= lesson.title %>" loading="lazy">
+    </div>
+    <div class="card-body">
+      <div class="card-header-row">
+        <span class="badge badge-<%= lesson.difficulty %>"><%= lesson.difficulty %></span>
+        <% if (completedLessons.has(lesson.slug)) { %>
+        <span class="completed-check" title="Fullført">&#10003;</span>
+        <% } %>
+      </div>
+      <h3><%= lesson.title %></h3>
+      <p><%= lesson.description %></p>
+      <a href="/leksjon/<%= lesson.slug %>" class="btn">Start leksjon</a>
+    </div>
+  </article>
+  <% }); %>
+</section>
+
+<%- include('footer.ejs') %>

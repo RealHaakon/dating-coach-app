@@ -1,0 +1,41 @@
+<%- include('header.ejs') %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+<section class="error-section">
+  <h2>Oi da!</h2>
+  <p><%= error %></p>
+  <a href="/" class="btn">Tilbake til hjem</a>
+</section>
+<% } else if (typeof publishStatus !== 'undefined' && publishStatus) { %>
+<section class="success-section">
+  <h2>Publisert!</h2>
+  <p><%= publishStatus %></p>
+  <a href="/" class="btn">Tilbake til hjem</a>
+</section>
+<% } else { %>
+
+<section class="hero">
+  <h1>Dating Coach Norge</h1>
+  <p class="hero-subtitle">Lær deg selv å kjenne, ta kontakt, føre gode samtaler og bygg selvtillit — steg for steg.</p>
+  <a href="/leksjoner" class="btn btn-primary">Start din reise</a>
+</section>
+
+<section class="lessons-grid">
+  <% lessons.forEach(function(lesson) { %>
+  <article class="lesson-card">
+    <div class="card-image">
+      <img src="/assets/images/<%= lesson.slug %>.jpg" alt="<%= lesson.title %>" loading="lazy">
+    </div>
+    <div class="card-body">
+      <span class="badge badge-<%= lesson.difficulty %>"><%= lesson.difficulty %></span>
+      <h3><%= lesson.title %></h3>
+      <p><%= lesson.description %></p>
+      <a href="/leksjon/<%= lesson.slug %>" class="btn">Start leksjon</a>
+    </div>
+  </article>
+  <% }); %>
+</section>
+
+<% } %>
+
+<%- include('footer.ejs') %>
